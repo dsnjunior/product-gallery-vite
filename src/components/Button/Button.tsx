@@ -7,9 +7,10 @@ export type ButtonProps = {
   iconPosition?: 'start' | 'end' | 'icon-only';
   disabled?: boolean;
   children?: React.ReactNode;
+  onClick?: () => void;
 };
 
-export function Button({ variant = 'filled', icon, iconPosition = 'start', disabled, children }: ButtonProps) {
+export function Button({ variant = 'filled', icon, iconPosition = 'start', disabled, children, onClick }: ButtonProps) {
   const outlined = variant === 'outlined';
   const iconStart = iconPosition === 'start';
   const iconEnd = iconPosition === 'end';
@@ -28,6 +29,7 @@ export function Button({ variant = 'filled', icon, iconPosition = 'start', disab
         },
       )}
       disabled={disabled}
+      onClick={onClick}
     >
       <span
         className={clsx('flex items-center', {

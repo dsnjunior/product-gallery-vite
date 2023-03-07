@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { describe, it } from 'vitest';
+import { describe, it, vi } from 'vitest';
 
 import { Button } from '../Button';
 
@@ -62,5 +62,27 @@ describe('Button.tsx', () => {
     const button = await screen.findByRole('button');
     expect(button).toHaveClass('disabled:text-gray-300');
     expect(button).toBeDisabled();
+  });
+
+  it('should call onClick', async () => {
+    const onClick = vi.fn();
+    render(<Button onClick={onClick}>Test</Button>);
+
+    const button = await screen.findByRole('button');
+    button.click();
+    expect(onClick).toHaveBeenCalled();
+  });
+
+  it('should not call onClick when disabled', async () => {
+    const onClick = vi.fn();
+    render(
+      <Button disabled onClick={onClick}>
+        Test
+      </Button>,
+    );
+
+    const button = await screen.findByRole('button');
+    button.click();
+    expect(onClick).not.toHaveBeenCalled();
   });
 });
