@@ -1,0 +1,17 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Button.tsx > should match snapshot 1`] = `
+<button
+  class="text-emerald-500 disabled:text-gray-300 px-6 py-2 rounded-full bg-current border-current border shadow-border transition-colors hover:text-emerald-600"
+>
+  <span
+    class="flex items-center text-neutral-50"
+  >
+    <span
+      class="text-l100 font-700"
+    >
+      Test
+    </span>
+  </span>
+</button>
+`;

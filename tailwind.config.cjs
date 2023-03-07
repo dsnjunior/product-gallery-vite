@@ -29,6 +29,9 @@ module.exports = {
     fontFamily: {
       sans: ['Inter', ...defaultTheme.fontFamily.sans],
     },
+    boxShadow: {
+      border: '0 0 0 0.5px currentColor',
+    },
   },
   plugins: [],
 };
