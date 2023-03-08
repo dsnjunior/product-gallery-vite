@@ -33,5 +33,5 @@ module.exports = {
       border: '0 0 0 0.5px currentColor',
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/line-clamp')],
 };
