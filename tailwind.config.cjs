@@ -9,7 +9,7 @@ module.exports = {
     extend: {},
     fontSize: {
       l100: ['1rem', { lineHeight: '100%', letterSpacing: '0.02em', fontWeight: '500' }],
-      c100: ['0.75rem', { lineHeight: '120%', letterSpacing: '0.04em', fontWeight: '400' }],
+      c100: ['0.75rem', { lineHeight: '100%', letterSpacing: '0.04em', fontWeight: '400' }],
       c200: ['1rem', { lineHeight: '162%', fontWeight: '400' }],
       p200: ['0.875rem', { lineHeight: '135%', letterSpacing: '0.01em', fontWeight: '400' }],
       p300: ['1rem', { lineHeight: '130%', letterSpacing: '0.01em', fontWeight: '400' }],

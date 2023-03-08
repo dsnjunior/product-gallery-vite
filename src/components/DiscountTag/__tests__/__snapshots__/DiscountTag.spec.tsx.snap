@@ -1,0 +1,10 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`DiscountTag.tsx > should render discount tag 1`] = `
+<span
+  class="text-c100 font-500 border shadow-border border-current rounded text-neutral-700 px-2 h-6 inline-flex items-center"
+>
+  35
+  % Off
+</span>
+`;
