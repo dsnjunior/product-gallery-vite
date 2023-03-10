@@ -7,6 +7,7 @@ export type TypographyProps = {
   className?: string;
   component?: React.ElementType;
   children: React.ReactNode;
+  title?: true | string;
 };
 
 const elements = {
@@ -50,7 +51,15 @@ const transforms = {
   capitalize: 'capitalize',
 } as const;
 
-export function Typography({ variant = 'p300', weight, transform, className, children, component }: TypographyProps) {
+export function Typography({
+  variant = 'p300',
+  weight,
+  transform,
+  className,
+  children,
+  component,
+  title,
+}: TypographyProps) {
   const Element = component ?? elements[variant];
 
   return (
@@ -61,6 +70,7 @@ export function Typography({ variant = 'p300', weight, transform, className, chi
         transform ? transforms[transform] : '',
         className,
       )}
+      title={typeof title === 'string' || typeof title === 'undefined' ? title : children}
     >
       {children}
     </Element>
