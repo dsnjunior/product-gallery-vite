@@ -4,6 +4,11 @@ import { DiscountTag } from '../DiscountTag';
 import { Tag } from '../Tag';
 import { Typography } from '../Typography';
 
+import arrowUpIcon from '../../assets/icons/product-card/arrow-up.svg';
+import addWishlistIcon from '../../assets/icons/product-card/add-wishlist.svg';
+import addedWishlistIcon from '../../assets/icons/product-card/added-wishlist.svg';
+import copyIcon from '../../assets/icons/product-card/copy.svg';
+
 export type ProductCardProps = {
   store: string;
   image: string;
@@ -13,9 +18,11 @@ export type ProductCardProps = {
   discount: number;
   freeShipping: boolean;
   freeGift: boolean;
-  coupon: boolean;
+  coupon?: string;
   url: string;
   disabled?: boolean;
+  wishlist?: boolean;
+  onToggleWishlist?: () => void;
 };
 
 export function ProductCard({
@@ -30,6 +37,8 @@ export function ProductCard({
   coupon,
   url,
   disabled,
+  wishlist,
+  onToggleWishlist,
 }: ProductCardProps) {
   return (
     <div className="bg-white rounded-3xl px-5 py-6 h-full border border-gray-200 text-left">
@@ -45,7 +54,7 @@ export function ProductCard({
         </Typography>
         <div className="mt-6 flex items-center">
           <Typography variant="l100" weight="700">
-            ${price}+
+            ${price}
           </Typography>
           {!!discount && (
             <span className="ml-2">
@@ -60,10 +69,42 @@ export function ProductCard({
           {freeGift && <Tag variant="gift" />}
         </div>
       </div>
-      <div>
-        <Button href={url} otherDomain>
+      <div className="flex whitespace-nowrap">
+        <Button
+          href={url}
+          otherDomain
+          icon={<img src={arrowUpIcon} alt="View deal icon" />}
+          iconPosition="end"
+          className="w-full"
+        >
           View Deal
         </Button>
+        {coupon && (
+          <Button
+            variant="outlined"
+            icon={<img src={copyIcon} alt="Copy icon" />}
+            iconPosition="end"
+            className="shrink-0 ml-2"
+          >
+            Coupon
+          </Button>
+        )}
+        {onToggleWishlist && (
+          <Button
+            variant="outlined"
+            icon={
+              <img
+                src={wishlist ? addedWishlistIcon : addWishlistIcon}
+                alt={wishlist ? 'Added to wishlist icon' : 'Add to wishlist icon'}
+              />
+            }
+            iconPosition="icon-only"
+            className="shrink-0 ml-2"
+            onClick={onToggleWishlist}
+          >
+            {wishlist ? 'Added' : 'Add'} to wishlist
+          </Button>
+        )}
       </div>
     </div>
   );

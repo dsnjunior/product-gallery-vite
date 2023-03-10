@@ -9,6 +9,7 @@ export type ButtonProps = {
   children?: React.ReactNode;
   href?: string;
   otherDomain?: boolean;
+  className?: string;
   onClick?: () => void;
 };
 
@@ -20,6 +21,7 @@ export function Button({
   children,
   href,
   otherDomain,
+  className,
   onClick,
 }: ButtonProps) {
   const outlined = variant === 'outlined';
@@ -34,13 +36,15 @@ export function Button({
       className={clsx(
         'flex items-center justify-center',
         'text-emerald-500 disabled:text-gray-300',
-        'px-6 py-2',
+        'py-2',
         'rounded-full bg-current border-current border shadow-border transition-colors',
         {
           ['bg-transparent hover:bg-neutral-50']: outlined,
           ['hover:text-emerald-600']: !outlined,
           ['px-2']: iconOnly,
+          ['px-6']: !iconOnly,
         },
+        className,
       )}
       disabled={disabled}
       onClick={onClick}
@@ -48,7 +52,7 @@ export function Button({
       {...(otherDomain && { target: '_blank', rel: 'noopener noreferrer' })}
     >
       <span
-        className={clsx('flex items-center', {
+        className={clsx('flex items-center shrink-0', {
           ['text-neutral-50']: !outlined,
           ['flex-row-reverse']: iconEnd,
         })}
